@@ -1,0 +1,8 @@
+{
+  "coffees": [
+    { "id": 1, "title": "Americano", "img": "americano.jpg", "price": 1 },
+    { "id": 1, "title": "Cappucino", "img": "cappucino.jpg", "price": 2 },
+    { "id": 1, "title": "Cold Brew", "img": "cold brew.jpg", "price": 2 },
+    { "id": 1, "title": "Iced Coffee", "img": "iced coffee.jpg", "price": 3 }
+  ]
+}
