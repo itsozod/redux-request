@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { getDatas } from "./store/reducers/getRequestReducer";
+import { getDatas } from "./store/functions/getRequestFn";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
