@@ -13,6 +13,7 @@ function App() {
   const [coffees, setCoffees] = useState([]);
   const [query, setQuery] = useState("");
   const [loader, setLoader] = useState(false);
+  const [maxPrice, setMaxPrice] = useState(3);
 
   const getCoffees = async () => {
     try {
@@ -43,8 +44,26 @@ function App() {
     }
   };
 
+  const handlePriceChange = (e) => {
+    const value = e.target.value;
+    setMaxPrice(value);
+  };
+
+  const filterCoffees = coffees.filter(
+    (coffee) => coffee.price >= 0 && coffee.price <= maxPrice
+  );
   return (
     <>
+      <label>
+        Filter by price ${0} - ${maxPrice}`
+      </label>
+      <input
+        type="range"
+        min="0"
+        max="3"
+        value={maxPrice}
+        onChange={(e) => handlePriceChange(e)}
+      />
       <input
         type="search"
         placeholder="Search..."
@@ -55,10 +74,11 @@ function App() {
         <p className="loader">Loading...</p>
       ) : (
         <div className="coffee_container">
-          {coffees.map((coffee) => (
+          {filterCoffees.map((coffee) => (
             <div className="coffee_card" key={coffee.id}>
               <p>{coffee.title}</p>
               <img className="coffee_img" src={coffee.img} alt={coffee.title} />
+              <p>{coffee.price}</p>
             </div>
           ))}
         </div>
