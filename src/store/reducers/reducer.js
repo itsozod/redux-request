@@ -1,2 +1,5 @@
 import { combineReducers } from "redux";
-export const reducer = combineReducers({});
+import { getRequestReducer } from "./getRequestReducer";
+export const reducer = combineReducers({
+  getRequestReducer,
+});

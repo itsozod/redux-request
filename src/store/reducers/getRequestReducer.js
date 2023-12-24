@@ -5,10 +5,34 @@ export const getRequestReducer = (state = requestData, action) => {
     case GET_REQUEST_ACTION:
       return {
         ...state,
-        loading: action.payload,
-        coffees: action.payload,
+        loading: action.payload.loading,
+        coffees: action.payload.coffees,
       };
     default:
       return state;
   }
+};
+
+export const getDatas = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: GET_REQUEST_ACTION,
+        payload: { loading: true, coffees: [] },
+      });
+      const reponse = await fetch("http://localhost:3000/coffees");
+      const data = await reponse.json();
+      dispatch({
+        type: GET_REQUEST_ACTION,
+        payload: { loading: false, coffees: data },
+      });
+      // console.log("Coffees:", data);
+    } catch (error) {
+      dispatch({
+        type: GET_REQUEST_ACTION,
+        payload: { loading: false, coffees: [] },
+      });
+      console.error(error);
+    }
+  };
 };
