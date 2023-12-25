@@ -4,6 +4,7 @@ import { getDatas } from "./store/functions/getRequestFn";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "./components/loader/Loader";
 import { Header } from "./components/header/Header";
+import { Card } from "./components/card/Card";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -22,10 +23,7 @@ function App() {
       ) : (
         <div className="coffee_container">
           {coffees.map((coffee) => (
-            <div className="coffee_card" key={coffee.id}>
-              <p>{coffee.title}</p>
-              <img className="coffee_img" src={coffee.img} alt={coffee.title} />
-            </div>
+            <Card key={coffee} coffee={coffee} />
           ))}
         </div>
       )}
