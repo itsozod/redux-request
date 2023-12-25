@@ -1,4 +1,5 @@
 import { GET_REQUEST_ACTION } from "../actions/getRequestAction";
+import { GET_QUERY } from "../actions/getQueryAction";
 import { requestData } from "../datas/requestData";
 export const getRequestReducer = (state = requestData, action) => {
   switch (action.type) {
@@ -8,6 +9,8 @@ export const getRequestReducer = (state = requestData, action) => {
         loading: action.payload.loading,
         coffees: action.payload.coffees,
       };
+    case GET_QUERY:
+      return { ...state, query: action.payload.query };
     default:
       return state;
   }
