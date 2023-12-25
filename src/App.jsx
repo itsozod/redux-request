@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { getDatas } from "./store/functions/getRequestFn";
 import { useDispatch, useSelector } from "react-redux";
+import { Loader } from "./components/loader/Loader";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -21,7 +22,7 @@ function App() {
         onChange={(e) => setQuery(e.target.value)}
       />
       {loader ? (
-        <p className="loader">Loading...</p>
+        <Loader />
       ) : (
         <div className="coffee_container">
           {coffees.map((coffee) => (
