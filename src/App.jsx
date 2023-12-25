@@ -10,10 +10,15 @@ function App() {
   const coffees = useSelector((state) => state.getRequestReducer.coffees);
   const loader = useSelector((state) => state.getRequestReducer.loading);
   const query = useSelector((state) => state.getRequestReducer.query);
+  const maxPrice = useSelector((state) => state.getRequestReducer.maxPrice);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDatas(query));
   }, [dispatch, query]);
+
+  const filterCoffee = coffees.filter(
+    (coffee) => coffee.price >= 0 && coffee.price <= maxPrice
+  );
 
   return (
     <>
@@ -21,11 +26,16 @@ function App() {
       {loader ? (
         <Loader />
       ) : (
-        <div className="coffee_container">
-          {coffees.map((coffee) => (
-            <Card key={coffee.id} coffee={coffee} />
-          ))}
-        </div>
+        <>
+          <div className="coffee_container">
+            {filterCoffee.map((coffee) => (
+              <Card key={coffee.id} coffee={coffee} />
+            ))}
+          </div>
+          <div className="notFoundContainer">
+            {filterCoffee.length === 0 && <h1>Not found...</h1>}
+          </div>
+        </>
       )}
     </>
   );

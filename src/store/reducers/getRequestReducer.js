@@ -1,5 +1,6 @@
 import { GET_REQUEST_ACTION } from "../actions/getRequestAction";
 import { GET_QUERY } from "../actions/getQueryAction";
+import { GET_PRICE_ACTION } from "../actions/getPriceAction";
 import { requestData } from "../datas/requestData";
 export const getRequestReducer = (state = requestData, action) => {
   switch (action.type) {
@@ -11,6 +12,8 @@ export const getRequestReducer = (state = requestData, action) => {
       };
     case GET_QUERY:
       return { ...state, query: action.payload.query };
+    case GET_PRICE_ACTION:
+      return { ...state, maxPrice: action.payload.maxPrice };
     default:
       return state;
   }

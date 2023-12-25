@@ -1,0 +1,1 @@
+export const GET_PRICE_ACTION = "GET_PRICE_ACTION";
