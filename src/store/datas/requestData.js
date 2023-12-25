@@ -2,5 +2,5 @@ export const requestData = {
   loading: false,
   coffees: [],
   query: "",
-  maxPrice: 4,
+  maxPrice: 10,
 };

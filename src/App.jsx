@@ -19,6 +19,7 @@ function App() {
   const filterCoffee = coffees.filter(
     (coffee) => coffee.price >= 0 && coffee.price <= maxPrice
   );
+  console.log(filterCoffee);
 
   return (
     <>

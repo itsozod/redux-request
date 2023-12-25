@@ -4,8 +4,8 @@ import { GET_QUERY } from "../../store/actions/getQueryAction";
 import { GET_PRICE_ACTION } from "../../store/actions/getPriceAction";
 
 export const Header = () => {
-  const query = useSelector((state) => state.getRequestReducer.query);
   const maxPrice = useSelector((state) => state.getRequestReducer.maxPrice);
+  const query = useSelector((state) => state.getRequestReducer.query);
   const dispatch = useDispatch();
   return (
     <header className={styles.header}>
@@ -27,12 +27,14 @@ export const Header = () => {
         <input
           type="range"
           min="0"
-          max="4"
+          max="10"
           value={maxPrice}
           onChange={(e) =>
             dispatch({
               type: GET_PRICE_ACTION,
-              payload: { maxPrice: e.target.value },
+              payload: {
+                maxPrice: e.target.value,
+              },
             })
           }
         />

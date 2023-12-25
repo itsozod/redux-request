@@ -13,7 +13,10 @@ export const getRequestReducer = (state = requestData, action) => {
     case GET_QUERY:
       return { ...state, query: action.payload.query };
     case GET_PRICE_ACTION:
-      return { ...state, maxPrice: action.payload.maxPrice };
+      return {
+        ...state,
+        maxPrice: action.payload.maxPrice,
+      };
     default:
       return state;
   }
