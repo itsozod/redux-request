@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getDatas } from "./store/functions/getRequestFn";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "./components/loader/Loader";
+import { Header } from "./components/header/Header";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -15,12 +16,7 @@ function App() {
 
   return (
     <>
-      <input
-        type="search"
-        placeholder="Search..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <Header />
       {loader ? (
         <Loader />
       ) : (
