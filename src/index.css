@@ -5,3 +5,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-image: linear-gradient(lightblue, lightcoral);
+  min-height: 100vh;
+}
